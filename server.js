@@ -62,6 +62,8 @@ const requestListener = (req, res) => {
       todos.splice(index, 1)
       res.writeHead(204, headers)
       res.end()
+    } else {
+      errorHandle(res, 400, "id is not exist")
     }
   } else if (req.url.startsWith('/todos/') && req.method === 'PATCH') {
     const id = req.url.split('/')[2]
